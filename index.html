@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>토고 스타일 소파 비교</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 요약 3칸 → 사진과 가까운 추천 → 필터 바 → 카드 그리드 → 정렬 가능한 비교 표 */
+:root{
+  --bg:#f5f4f1; --surface:#ffffff; --sunk:#ebe9e4; --line:#dcd8d0;
+  --fg:#23211d; --muted:#6c675e; --accent:#4b5d3a; --accent-fg:#ffffff; --accent-soft:#e3e8da;
+  --warn:#9a5a12; --ph1:#e6e1d6; --ph2:#d7d0c2;
+  --display:"IBM Plex Sans KR","Noto Sans KR",system-ui,sans-serif;
+  --body:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171714; --surface:#22211d; --sunk:#2b2a25; --line:#3a3832;
+  --fg:#ece9e2; --muted:#a39d91; --accent:#a9c08c; --accent-fg:#1a1d14; --accent-soft:#2f3828;
+  --warn:#e0a458; --ph1:#2c2a24; --ph2:#383530; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171714; --surface:#22211d; --sunk:#2b2a25; --line:#3a3832;
+  --fg:#ece9e2; --muted:#a39d91; --accent:#a9c08c; --accent-fg:#1a1d14; --accent-soft:#2f3828;
+  --warn:#e0a458; --ph1:#2c2a24; --ph2:#383530; color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:700}
+h2{font-size:1.2rem;font-weight:600}
+.lede{color:var(--muted);max-width:68ch;margin:8px 0 0}
+.notice{display:flex;gap:10px;align-items:flex-start;background:var(--sunk);border-radius:var(--r);padding:12px 14px;font-size:.88rem;color:var(--muted)}
+.notice b{color:var(--fg)}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+/* summary */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.sum{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;color:inherit;text-decoration:none}
+.sum:hover{border-color:var(--accent)}
+.sum .thumb{width:76px;height:76px;border-radius:8px}
+.sum .big{font-family:var(--display);font-size:1.35rem;font-weight:700}
+.sum .nm{font-size:.86rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sum .why{font-size:.78rem;color:var(--accent);font-weight:500;margin-top:2px}
+/* picks */
+.picks{background:var(--accent-soft);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.picks ol{margin:0;padding-left:1.3em;display:grid;gap:8px}
+.picks li{padding-left:2px}
+.picks a{color:var(--fg);font-weight:600}
+.picks .r{color:var(--muted);font-size:.9rem}
+/* controls */
+.controls{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:flex-end;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.ctl{display:grid;gap:5px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:inherit;font-size:.86rem;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:6px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+select{font:inherit;font-size:.88rem;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.count{margin-left:auto;color:var(--muted);font-size:.86rem}
+button:focus-visible,select:focus-visible,a:focus-visible,th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.thumb{position:relative;aspect-ratio:1/1;max-width:100%;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.8rem;text-align:center;padding:8px}
+.thumb.ok .ph{display:none}
+.badge{position:absolute;top:10px;left:10px;background:var(--surface);color:var(--fg);font-size:.72rem;font-weight:600;padding:3px 8px;border-radius:999px;border:1px solid var(--line)}
+.card .body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.brand{font-size:.8rem;color:var(--muted);font-weight:500}
+.card h3{font-size:.98rem;font-weight:600;font-family:var(--body);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price .now{font-family:var(--display);font-size:1.25rem;font-weight:700}
+.price .off{color:var(--warn);font-weight:700;font-size:.9rem}
+.price .was{color:var(--muted);text-decoration:line-through;font-size:.82rem}
+.meta{font-size:.82rem;color:var(--muted);display:grid;gap:2px}
+.meta .unk{color:var(--warn)}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:.74rem;padding:2px 8px;border-radius:999px;background:var(--sunk);color:var(--fg)}
+.tag.hi{background:var(--accent-soft);color:var(--accent);font-weight:500}
+.stars{font-size:.85rem}
+.stars b{font-weight:700}
+.buy{margin-top:auto;display:block;text-align:center;background:var(--accent);color:var(--accent-fg);text-decoration:none;font-weight:600;padding:10px;border-radius:8px}
+.buy:hover{filter:brightness(1.08)}
+.empty{padding:32px;text-align:center;color:var(--muted);background:var(--surface);border-radius:var(--r);border:1px dashed var(--line)}
+/* table */
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:.86rem}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--sunk);font-weight:600;white-space:nowrap;position:sticky;top:0}
+th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+th button::after{content:"↕";color:var(--muted);font-size:.8em}
+th button[data-dir="asc"]::after{content:"↑";color:var(--accent)}
+th button[data-dir="desc"]::after{content:"↓";color:var(--accent)}
+td.r{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td a{color:var(--accent);font-weight:600}
+td .unk{color:var(--warn)}
+footer{color:var(--muted);font-size:.8rem;display:grid;gap:4px}
+@media (max-width:560px){.count{margin-left:0;width:100%}.sum{grid-template-columns:64px 1fr}.sum .thumb{width:64px;height:64px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">거실 소파 · 오늘의집 15개 상품</span>
+    <h1>토고 스타일 소파 비교</h1>
+    <p class="lede">리네로제 토고처럼 낮고 주름진 폼 소파를 중심으로, 오늘의집에서 고른 15개 상품의 가격·평점·사이즈·원단을 한곳에 모았습니다. 정품 토고 2인 신품은 약 643만 원부터입니다.</p>
+  </header>
+
+  <div class="notice" role="note">
+    <span>ⓘ</span>
+    <span><b>가격은 <span id="collected"></span> 수집 기준</b>이며 표시된 금액은 각 상품의 최저 옵션가입니다. 인원·원단 옵션을 바꾸면 가격이 올라갈 수 있고, 쿠폰·특가는 수시로 바뀝니다. 사이즈가 상세 이미지에만 있는 상품은 <span style="color:var(--warn)">확인 불가</span>로 표시했습니다.</span>
+  </div>
+
+  <section class="summary" id="summary" aria-label="요약"></section>
+
+  <section class="picks" aria-labelledby="picks-h">
+    <h2 id="picks-h">사진 속 소파(아이보리 패브릭 2인)에 가까운 추천 3</h2>
+    <ol id="picks"></ol>
+  </section>
+
+  <div class="controls" role="group" aria-label="필터와 정렬">
+    <div class="ctl"><span class="eyebrow">인원</span><div class="seg" id="f-seats">
+      <button type="button" data-v="all" aria-pressed="true">전체</button>
+      <button type="button" data-v="1" aria-pressed="false">1인</button>
+      <button type="button" data-v="2" aria-pressed="false">2인 이상</button>
+    </div></div>
+    <div class="ctl"><span class="eyebrow">가격대</span><div class="seg" id="f-price">
+      <button type="button" data-v="all" aria-pressed="true">전체</button>
+      <button type="button" data-v="0-200000" aria-pressed="false">20만 원 미만</button>
+      <button type="button" data-v="200000-400000" aria-pressed="false">20~40만 원</button>
+      <button type="button" data-v="400000-1000000" aria-pressed="false">40~100만 원</button>
+      <button type="button" data-v="1000000-99999999" aria-pressed="false">100만 원 이상</button>
+    </div></div>
+    <div class="ctl"><label class="eyebrow" for="sort">정렬</label>
+      <select id="sort">
+        <option value="price-asc">가격 낮은순</option>
+        <option value="price-desc">가격 높은순</option>
+        <option value="total-asc">배송비 포함 낮은순</option>
+        <option value="rating-desc">평점 높은순</option>
+        <option value="reviews-desc">리뷰 많은순</option>
+      </select></div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <section class="grid" id="grid" aria-label="상품 카드"></section>
+
+  <section aria-labelledby="tbl-h" style="display:grid;gap:12px">
+    <h2 id="tbl-h">한눈에 비교</h2>
+    <p class="lede" style="margin:0">열 제목을 누르면 정렬됩니다. 위 필터가 표에도 적용됩니다.</p>
+    <div class="tablebox"><table>
+      <thead><tr>
+        <th>#</th>
+        <th><button type="button" data-k="name">상품</button></th>
+        <th><button type="button" data-k="price">판매가</button></th>
+        <th><button type="button" data-k="deliveryFee">배송비</button></th>
+        <th><button type="button" data-k="total">합계</button></th>
+        <th><button type="button" data-k="seatsMax">인원</button></th>
+        <th><button type="button" data-k="width">사이즈</button></th>
+        <th><button type="button" data-k="fabric">원단</button></th>
+        <th>색상</th>
+        <th><button type="button" data-k="rating">평점</button></th>
+        <th>링크</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table></div>
+  </section>
+
+  <footer>
+    <span>출처: 오늘의집 상품 페이지의 구조화 데이터와 상품정보제공고시. 이미지 저작권은 각 판매처에 있습니다.</span>
+    <span>"확인 불가"는 상품 페이지 텍스트에서 읽을 수 없었던 항목입니다(대부분 상세 이미지 안에만 있음).</span>
+  </footer>
+</div>
+
+<script>
+const DATA = {"collectedAt": "2026-11-25", "source": "오늘의집 상품 페이지 (store.ohou.se/goods/{id})의 구조화 데이터와 상품정보제공고시", "notes": ["가격은 수집일 기준 최저 옵션가입니다. 인원/원단 옵션에 따라 가격이 올라갈 수 있습니다.", "사이즈가 상세 이미지에만 있는 상품은 '확인 불가'로 표시했습니다.", "리뷰 0건은 평점 없음(null)으로 표시했습니다."], "items": [{"id": 4245789, "link": "https://ozip.me/qxNFm63", "brand": "오슬로홈", "name": "오슬로홈 토고 소파 모듈형 패브릭 소파 1인 2인", "price": 235000, "originalPrice": 320000, "deliveryFee": 6000, "rating": null, "reviews": 0, "seats": [1, 2], "size": "확인 불가", "fabric": "원목합판+레더 (고시 기준)", "modular": true, "togoStyle": true, "ivory": false, "colors": ["1인 그레이", "2인 노랑", "2인 그레이"], "delivery": "배송비 6,000원 · 오늘출발 상품", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-549809200808000.png?w=720"}, {"id": 3661944, "link": "https://ozip.me/8xSj1H2", "brand": "라이크이츠", "name": "[해외] 애벌레 번데기 모듈 주름 소파 1인 2인 3인 코너형", "price": 349000, "originalPrice": 750000, "deliveryFee": 0, "rating": 5.0, "reviews": 10, "seats": [1, 2, 3], "size": "확인 불가", "fabric": "신소재 가죽 / 스웨이드 / 코듀로이 2종 / 기타 원단 문의", "modular": true, "togoStyle": true, "ivory": null, "colors": ["원단별 색상은 상세페이지 참조", "1인·2인·3인·코너형"], "delivery": "무료배송 · 해외 주문제작", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-400495033978880.jpg?w=720"}, {"id": 3947561, "link": "https://ozip.me/TC5P09a", "brand": "라이크이츠", "name": "[해외] 베이직 주름 애벌레 번데기 모듈 소파 쇼파 1인 2인 3인", "price": 299000, "originalPrice": 480000, "deliveryFee": 0, "rating": 5.0, "reviews": 1, "seats": [1, 2, 3], "size": "확인 불가", "fabric": "스웨이드 / 신소재 가죽 / 코듀로이 / 그라데이션 니트 코튼", "modular": true, "togoStyle": true, "ivory": null, "colors": ["원단별 색상은 상세페이지 참조"], "delivery": "무료배송 · 해외 주문제작", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-465558338457664.jpg?w=720"}, {"id": 4033663, "link": "https://ozip.me/cfBkI1G", "brand": "팝하우스", "name": "타가 가죽 / 스웨이드 패브릭 1인용 좌식 소파 9colors (주문제작가능)", "price": 899000, "originalPrice": 1200000, "deliveryFee": 0, "rating": 4.7, "reviews": 7, "seats": [1], "size": "레더 870×1020×750mm / 스웨이드 870×1000×750mm", "fabric": "비건 나파 레더(마이크로화이버) 또는 스웨이드 패브릭, 고밀도 스펀지", "modular": false, "togoStyle": true, "ivory": true, "colors": ["레더: 블랙·브라운·아이보리", "스웨이드: 아이보리·옐로우·카멜·다크그린·스카이블루·블랙", "주문제작 컬러"], "delivery": "전국 무료배송(제주·도서산간 불가) · 상시 출고 약 1주, 주문제작 3~4주", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-487907609968640.jpg?w=720"}, {"id": 2998329, "link": "https://ozip.me/iap2baI", "brand": "마켓비", "name": "니스코 1인 좌식소파 XA10061H", "price": 290000, "originalPrice": 348000, "deliveryFee": 0, "rating": 5.0, "reviews": 4, "seats": [1], "size": "확인 불가", "fabric": "확인 불가", "modular": false, "togoStyle": true, "ivory": null, "colors": ["화이트", "브라운", "그레이"], "delivery": "무료배송(도서산간 별도) · DIY 제품", "image": "https://prs.ohousecdn.com/apne2/commerce/shop-images/471941/v1-561500871761920.jpg?w=720"}, {"id": 3127541, "link": "https://ozip.me/tQc5XIG", "brand": "지엠퍼니처", "name": "[오늘의집 단독] 밀라 디자인 패브릭 1인용 소파 회전 카페 안락의자", "price": 129000, "originalPrice": 188000, "deliveryFee": 12000, "rating": 4.7, "reviews": 1227, "seats": [1], "size": "확인 불가", "fabric": "패브릭 (부클레 옵션 포함, 세부 소재 확인 불가)", "modular": false, "togoStyle": false, "ivory": true, "colors": ["그린", "블랙", "모브핑크", "머스타드", "브릭브라운", "부클레"], "delivery": "배송비 12,000원 · 도착 예정 11/30(월) 91%", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-481884176994304.jpg?w=720"}, {"id": 4043848, "link": "https://ozip.me/QwSDEua", "brand": "로얄홈", "name": "[해외] 푸파 소파 애벌레 주름 1인 주문제작", "price": 318000, "originalPrice": 418000, "deliveryFee": 0, "rating": 3.0, "reviews": 1, "seats": [1], "size": "확인 불가", "fabric": "스웨이드 / 코듀로이 / 실리콘레더 / 인조가죽 / 천연 소가죽 / 마샤 / 기타", "modular": false, "togoStyle": true, "ivory": null, "colors": ["원단별 색상은 상세페이지 참조"], "delivery": "무료배송 · 해외 주문제작", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-490710979485824.png?w=720"}, {"id": 3837665, "link": "https://ozip.me/zZnAfnj", "brand": "라이크이츠", "name": "[해외] 애벌레 번데기 모듈 주름 미니 소파 쇼파", "price": 209000, "originalPrice": 285000, "deliveryFee": 0, "rating": null, "reviews": 0, "seats": [1], "size": "확인 불가", "fabric": "신소재 가죽 / 스웨이드 / 코듀로이 2종 / 50주년 한정판 / 기타", "modular": true, "togoStyle": true, "ivory": null, "colors": ["원단별 색상은 상세페이지 참조"], "delivery": "무료배송 · 해외 주문제작", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-438686534803456.jpg?w=720"}, {"id": 1611728, "link": "https://ozip.me/1XJFs7n", "brand": "미드센추리", "name": "[15%쿠폰!] 미니로제 주름소파 1인쇼파 거실 인테리어 편한소파 85cm", "price": 159900, "originalPrice": 200000, "deliveryFee": 40000, "rating": 4.7, "reviews": 360, "seats": [1, 2], "size": "폭 85cm (상품명 기준, 나머지 확인 불가)", "fabric": "확인 불가", "modular": false, "togoStyle": true, "ivory": false, "colors": ["블랙 1인", "브라운 1인", "블랙 2인"], "delivery": "배송비 40,000원", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-520461840216128.jpg?w=720"}, {"id": 3296307, "link": "https://ozip.me/6Bwv1Ho", "brand": "옐로우라이트", "name": "PH 17 2인용기본 가죽모듈쇼파 이태리 내추럴 통가죽 천연면피 소가죽소파(전체가죽)", "price": 1970000, "originalPrice": 3200000, "deliveryFee": 70000, "rating": 5.0, "reviews": 2, "seats": [2], "size": "확인 불가", "fabric": "이태리 천연면피 소가죽 (전체가죽)", "modular": true, "togoStyle": true, "ivory": null, "colors": ["M-01 등 기본 5종", "크레스트 12종", "크레스트 빈티지 17종"], "delivery": "배송비 70,000원 · 주문제작", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-323609314472064.jpg?w=720"}, {"id": 957369, "link": "https://ozip.me/HB0JRxB", "brand": "마켓비", "name": "니스코 좌식소파 F708", "price": 469000, "originalPrice": 562800, "deliveryFee": 0, "rating": 5.0, "reviews": 3, "seats": [2], "size": "100×110×76cm (13kg)", "fabric": "폴리에스터 100% 커버, PU폼 충전, 소나무·합판·스틸 프레임", "modular": false, "togoStyle": true, "ivory": true, "colors": ["화이트"], "delivery": "무료배송(도서산간 별도) · 오늘출발 · DIY 제품", "image": "https://image.ohousecdn.com/i/bucketplace-v2-development/uploads/productions/162812482829285356.jpg?w=720"}, {"id": 4251635, "link": "https://ozip.me/OEHZztZ", "brand": "마켓비", "name": "니스코 1인 패브릭 압축소파", "price": 179000, "originalPrice": 214800, "deliveryFee": 0, "rating": null, "reviews": 0, "seats": [1], "size": "확인 불가", "fabric": "패브릭 (세부 소재 확인 불가) · 압축 배송", "modular": false, "togoStyle": true, "ivory": true, "colors": ["베이지", "다크그레이", "라이트그레이"], "delivery": "무료배송", "image": "https://prs.ohousecdn.com/apne2/commerce/shop-images/471941/v1-551975952633920.jpg?w=720"}, {"id": 1860351, "link": "https://ozip.me/CzpGnOs", "brand": "먼데이하우스", "name": "[한정특가] 라인 아쿠아텍스 1인용 패브릭 소파 M/L+스툴선택", "price": 189000, "originalPrice": 287000, "deliveryFee": 30000, "rating": 4.7, "reviews": 594, "seats": [1], "size": "확인 불가 (미디움/라지 2종)", "fabric": "아쿠아텍스 패브릭, 고밀도 폼", "modular": false, "togoStyle": false, "ivory": true, "colors": ["아이보리"], "delivery": "배송비 30,000원 (설치 시 기사님께 직접 지불, 계단비 등 별도)", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-461050355658880.png?w=720"}, {"id": 4005241, "link": "https://ozip.me/ZGXxCBZ", "brand": "미드센추리", "name": "미니로제 주름소파 럭셔리 초대형 2인소파 더블쇼파", "price": 399900, "originalPrice": 450000, "deliveryFee": 70000, "rating": 5.0, "reviews": 4, "seats": [2], "size": "확인 불가", "fabric": "확인 불가", "modular": false, "togoStyle": true, "ivory": true, "colors": ["블랙", "아이보리"], "delivery": "배송비 70,000원", "image": "https://image.ohousecdn.com/i/bucketplace-v2-development/uploads/openapi/8251659/1774326801204.jpg?w=720"}, {"id": 3065727, "link": "https://ozip.me/6esAgJr", "brand": "에보니아", "name": "빅터 릴렉스2인용쇼파 아쿠아스웨이드 빈백소파 (스툴옵션)", "price": 295200, "originalPrice": 514000, "deliveryFee": 30000, "rating": 3.0, "reviews": 1, "seats": [2], "size": "확인 불가", "fabric": "아쿠아스웨이드 (상품명 기준)", "modular": false, "togoStyle": true, "ivory": true, "colors": ["라이트그레이", "핑크", "머스타드", "아이보리"], "delivery": "배송비 30,000원", "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-297179286564864.jpg?w=720"}]};
+const IMG = /*IMG*/{};
+const PICKS = [
+  {id:4005241, why:"아이보리 2인 주름소파로 사진 속 실루엣과 가장 비슷합니다. 평점 5.0(4건). 배송비 7만 원이 따로 붙습니다."},
+  {id:957369, why:"화이트 2인 좌식소파, 폴리에스터 패브릭. 사이즈(100×110×76cm)가 확인되고 무료배송·오늘출발입니다. DIY 조립형."},
+  {id:3661944, why:"2인·3인·코너형까지 모듈 구성, 스웨이드·코듀로이 원단 선택. 리뷰 10건 평균 5.0, 무료배송. 2인 옵션은 표시가보다 비쌀 수 있고 해외 주문제작이라 배송이 깁니다."}
+];
+const won = n => n.toLocaleString("ko-KR") + "원";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const items = DATA.items.map(d => {
+  const m = d.size.match(/(\d{2,4})\s*[×x]/);
+  let width = null;
+  if (m) { width = +m[1]; if (/mm/.test(d.size)) width = width/10; }
+  else { const w = d.size.match(/폭\s*(\d+)cm/); if (w) width = +w[1]; }
+  return {...d, total:d.price + d.deliveryFee, seatsMax:Math.max(...d.seats), width,
+          disc: d.originalPrice ? Math.round((1 - d.price/d.originalPrice)*100) : 0};
+});
+const byId = Object.fromEntries(items.map(d => [d.id, d]));
+document.getElementById("collected").textContent = DATA.collectedAt.replace(/-/g, ". ") + ".";
+
+function thumb(d, cls = "", badge = "") {
+  const src = IMG[d.id] || d.image;
+  return `<div class="thumb ${cls}">${badge}<img src="${esc(src)}" alt="${esc(d.brand + " " + d.name)}" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.classList.add('ok')" onerror="this.remove()"><span class="ph">이미지를 불러오지 못했습니다<br>${esc(d.brand)}</span></div>`;
+}
+const seatsLabel = d => d.seats.length > 1 ? d.seats.join("·") + "인" : d.seats[0] + "인";
+const stars = d => d.rating == null ? `<span class="stars" style="color:var(--muted)">리뷰 없음</span>`
+  : `<span class="stars">★ <b class="num">${d.rating.toFixed(1)}</b> <span style="color:var(--muted)">(${d.reviews.toLocaleString()}건)</span></span>`;
+const unk = s => /확인 불가/.test(s) ? `<span class="unk">${esc(s)}</span>` : esc(s);
+
+/* summary */
+(function(){
+  const cheapest = [...items].sort((a,b) => a.price - b.price)[0];
+  const top = items.filter(d => d.reviews >= 50).sort((a,b) => b.rating - a.rating || b.reviews - a.reviews)[0];
+  const value = items.filter(d => d.seatsMax >= 2 && d.ivory && d.togoStyle && d.rating >= 4.5 && d.reviews >= 3)
+                     .sort((a,b) => a.total - b.total)[0];
+  const card = (label, d, big, why) => `<a class="sum" href="${esc(d.link)}" target="_blank" rel="noopener">${thumb(d)}<div>
+      <div class="eyebrow">${label}</div><div class="big num">${big}</div><div class="nm">${esc(d.brand)} · ${esc(d.name)}</div><div class="why">${why}</div></div></a>`;
+  document.getElementById("summary").innerHTML =
+    card("최저가", cheapest, won(cheapest.price), `배송비 포함 ${won(cheapest.total)}`) +
+    card("최고 평점 (리뷰 50건 이상)", top, "★ " + top.rating.toFixed(1), `리뷰 ${top.reviews.toLocaleString()}건 · ${won(top.price)}`) +
+    card("가성비 추천 (2인·아이보리 가능)", value, won(value.total), `배송비 포함 · ★ ${value.rating.toFixed(1)} (${value.reviews}건)`);
+  document.getElementById("picks").innerHTML = PICKS.map(p => { const d = byId[p.id];
+    return `<li><a href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.brand)} · ${esc(d.name)}</a> <span class="num">— ${won(d.price)}~</span><div class="r">${esc(p.why)}</div></li>`; }).join("");
+})();
+
+/* filters + sort */
+const state = {seats:"all", price:"all", sort:"price-asc", tKey:null, tDir:"asc"};
+function pass(d){
+  if (state.seats === "1" && !d.seats.includes(1)) return false;
+  if (state.seats === "2" && d.seatsMax < 2) return false;
+  if (state.price !== "all") { const [lo,hi] = state.price.split("-").map(Number); if (d.price < lo || d.price >= hi) return false; }
+  return true;
+}
+const cmp = {
+  "price-asc": (a,b) => a.price - b.price, "price-desc": (a,b) => b.price - a.price,
+  "total-asc": (a,b) => a.total - b.total,
+  "rating-desc": (a,b) => (b.rating ?? -1) - (a.rating ?? -1) || b.reviews - a.reviews,
+  "reviews-desc": (a,b) => b.reviews - a.reviews
+};
+function render(){
+  const list = items.filter(pass).sort(cmp[state.sort]);
+  document.getElementById("count").textContent = `${list.length} / ${items.length}개 표시`;
+  document.getElementById("grid").innerHTML = list.length ? list.map(d => {
+    const tags = [`<span class="tag hi">${seatsLabel(d)}</span>`];
+    if (d.togoStyle) tags.push(`<span class="tag hi">주름 로우 소파</span>`);
+    if (d.modular) tags.push(`<span class="tag">모듈형</span>`);
+    if (d.ivory) tags.push(`<span class="tag">아이보리/화이트</span>`);
+    tags.push(`<span class="tag">${d.deliveryFee ? "배송비 " + won(d.deliveryFee) : "무료배송"}</span>`);
+    return `<article class="card">${thumb(d, "", d.disc ? `<span class="badge num">${d.disc}% 할인</span>` : "")}
+      <div class="body"><div class="brand">${esc(d.brand)}</div><h3>${esc(d.name)}</h3>
+      <div class="price"><span class="now num">${won(d.price)}</span>${d.disc ? `<span class="off num">${d.disc}%</span><span class="was num">${won(d.originalPrice)}</span>` : ""}</div>
+      ${stars(d)}
+      <div class="tags">${tags.join("")}</div>
+      <div class="meta"><span>사이즈: ${unk(d.size)}</span><span>원단: ${unk(d.fabric)}</span><span>색상: ${esc(d.colors.join(", "))}</span><span>배송: ${esc(d.delivery)}</span></div>
+      <a class="buy" href="${esc(d.link)}" target="_blank" rel="noopener">구매하기 ↗</a></div></article>`;
+  }).join("") : `<div class="empty">조건에 맞는 상품이 없습니다. 인원이나 가격대 필터를 넓혀 보세요.</div>`;
+
+  let rows = list;
+  if (state.tKey) {
+    const k = state.tKey, s = state.tDir === "asc" ? 1 : -1;
+    rows = [...list].sort((a,b) => { const x = a[k], y = b[k];
+      if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+      return (typeof x === "string" ? x.localeCompare(y, "ko") : x - y) * s; });
+  }
+  document.getElementById("tbody").innerHTML = rows.map((d,i) => `<tr>
+    <td class="num">${i+1}</td>
+    <td style="min-width:220px"><div class="brand">${esc(d.brand)}</div>${esc(d.name)}</td>
+    <td class="r num">${won(d.price)}${d.disc ? `<div style="color:var(--muted);font-size:.78rem">정가 ${won(d.originalPrice)}</div>` : ""}</td>
+    <td class="r num">${d.deliveryFee ? won(d.deliveryFee) : "무료"}</td>
+    <td class="r num"><b>${won(d.total)}</b></td>
+    <td>${seatsLabel(d)}${d.modular ? "<div style='color:var(--muted);font-size:.78rem'>모듈형</div>" : ""}</td>
+    <td style="min-width:140px">${unk(d.size)}</td>
+    <td style="min-width:180px">${unk(d.fabric)}</td>
+    <td style="min-width:150px">${esc(d.colors.join(", "))}</td>
+    <td class="num" style="white-space:nowrap">${d.rating == null ? "–" : "★ " + d.rating.toFixed(1)}<div style="color:var(--muted);font-size:.78rem">${d.reviews.toLocaleString()}건</div></td>
+    <td><a href="${esc(d.link)}" target="_blank" rel="noopener">열기↗</a></td></tr>`).join("");
+}
+function seg(id, key){
+  const el = document.getElementById(id);
+  el.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
+    el.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    state[key] = b.dataset.v; render(); });
+}
+seg("f-seats", "seats"); seg("f-price", "price");
+document.getElementById("sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
+document.querySelectorAll("th button").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.k; state.tDir = state.tKey === k && state.tDir === "asc" ? "desc" : "asc"; state.tKey = k;
+  document.querySelectorAll("th button").forEach(x => x.removeAttribute("data-dir"));
+  b.dataset.dir = state.tDir; render(); }));
+render();
+</script>
+
+</body>
+</html>

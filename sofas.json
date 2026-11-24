@@ -1,0 +1,191 @@
+{
+  "collectedAt": "2026-11-25",
+  "source": "오늘의집 상품 페이지 (store.ohou.se/goods/{id})의 구조화 데이터와 상품정보제공고시",
+  "notes": [
+    "가격은 수집일 기준 최저 옵션가입니다. 인원/원단 옵션에 따라 가격이 올라갈 수 있습니다.",
+    "사이즈가 상세 이미지에만 있는 상품은 '확인 불가'로 표시했습니다.",
+    "리뷰 0건은 평점 없음(null)으로 표시했습니다."
+  ],
+  "items": [
+    {
+      "id": 4245789, "link": "https://ozip.me/qxNFm63",
+      "brand": "오슬로홈", "name": "오슬로홈 토고 소파 모듈형 패브릭 소파 1인 2인",
+      "price": 235000, "originalPrice": 320000, "deliveryFee": 6000,
+      "rating": null, "reviews": 0,
+      "seats": [1, 2], "size": "확인 불가",
+      "fabric": "원목합판+레더 (고시 기준)",
+      "modular": true, "togoStyle": true, "ivory": false,
+      "colors": ["1인 그레이", "2인 노랑", "2인 그레이"],
+      "delivery": "배송비 6,000원 · 오늘출발 상품",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-549809200808000.png?w=720"
+    },
+    {
+      "id": 3661944, "link": "https://ozip.me/8xSj1H2",
+      "brand": "라이크이츠", "name": "[해외] 애벌레 번데기 모듈 주름 소파 1인 2인 3인 코너형",
+      "price": 349000, "originalPrice": 750000, "deliveryFee": 0,
+      "rating": 5.0, "reviews": 10,
+      "seats": [1, 2, 3], "size": "확인 불가",
+      "fabric": "신소재 가죽 / 스웨이드 / 코듀로이 2종 / 기타 원단 문의",
+      "modular": true, "togoStyle": true, "ivory": null,
+      "colors": ["원단별 색상은 상세페이지 참조", "1인·2인·3인·코너형"],
+      "delivery": "무료배송 · 해외 주문제작",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-400495033978880.jpg?w=720"
+    },
+    {
+      "id": 3947561, "link": "https://ozip.me/TC5P09a",
+      "brand": "라이크이츠", "name": "[해외] 베이직 주름 애벌레 번데기 모듈 소파 쇼파 1인 2인 3인",
+      "price": 299000, "originalPrice": 480000, "deliveryFee": 0,
+      "rating": 5.0, "reviews": 1,
+      "seats": [1, 2, 3], "size": "확인 불가",
+      "fabric": "스웨이드 / 신소재 가죽 / 코듀로이 / 그라데이션 니트 코튼",
+      "modular": true, "togoStyle": true, "ivory": null,
+      "colors": ["원단별 색상은 상세페이지 참조"],
+      "delivery": "무료배송 · 해외 주문제작",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-465558338457664.jpg?w=720"
+    },
+    {
+      "id": 4033663, "link": "https://ozip.me/cfBkI1G",
+      "brand": "팝하우스", "name": "타가 가죽 / 스웨이드 패브릭 1인용 좌식 소파 9colors (주문제작가능)",
+      "price": 899000, "originalPrice": 1200000, "deliveryFee": 0,
+      "rating": 4.7, "reviews": 7,
+      "seats": [1], "size": "레더 870×1020×750mm / 스웨이드 870×1000×750mm",
+      "fabric": "비건 나파 레더(마이크로화이버) 또는 스웨이드 패브릭, 고밀도 스펀지",
+      "modular": false, "togoStyle": true, "ivory": true,
+      "colors": ["레더: 블랙·브라운·아이보리", "스웨이드: 아이보리·옐로우·카멜·다크그린·스카이블루·블랙", "주문제작 컬러"],
+      "delivery": "전국 무료배송(제주·도서산간 불가) · 상시 출고 약 1주, 주문제작 3~4주",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-487907609968640.jpg?w=720"
+    },
+    {
+      "id": 2998329, "link": "https://ozip.me/iap2baI",
+      "brand": "마켓비", "name": "니스코 1인 좌식소파 XA10061H",
+      "price": 290000, "originalPrice": 348000, "deliveryFee": 0,
+      "rating": 5.0, "reviews": 4,
+      "seats": [1], "size": "확인 불가",
+      "fabric": "확인 불가",
+      "modular": false, "togoStyle": true, "ivory": null,
+      "colors": ["화이트", "브라운", "그레이"],
+      "delivery": "무료배송(도서산간 별도) · DIY 제품",
+      "image": "https://prs.ohousecdn.com/apne2/commerce/shop-images/471941/v1-561500871761920.jpg?w=720"
+    },
+    {
+      "id": 3127541, "link": "https://ozip.me/tQc5XIG",
+      "brand": "지엠퍼니처", "name": "[오늘의집 단독] 밀라 디자인 패브릭 1인용 소파 회전 카페 안락의자",
+      "price": 129000, "originalPrice": 188000, "deliveryFee": 12000,
+      "rating": 4.7, "reviews": 1227,
+      "seats": [1], "size": "확인 불가",
+      "fabric": "패브릭 (부클레 옵션 포함, 세부 소재 확인 불가)",
+      "modular": false, "togoStyle": false, "ivory": true,
+      "colors": ["그린", "블랙", "모브핑크", "머스타드", "브릭브라운", "부클레"],
+      "delivery": "배송비 12,000원 · 도착 예정 11/30(월) 91%",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-481884176994304.jpg?w=720"
+    },
+    {
+      "id": 4043848, "link": "https://ozip.me/QwSDEua",
+      "brand": "로얄홈", "name": "[해외] 푸파 소파 애벌레 주름 1인 주문제작",
+      "price": 318000, "originalPrice": 418000, "deliveryFee": 0,
+      "rating": 3.0, "reviews": 1,
+      "seats": [1], "size": "확인 불가",
+      "fabric": "스웨이드 / 코듀로이 / 실리콘레더 / 인조가죽 / 천연 소가죽 / 마샤 / 기타",
+      "modular": false, "togoStyle": true, "ivory": null,
+      "colors": ["원단별 색상은 상세페이지 참조"],
+      "delivery": "무료배송 · 해외 주문제작",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-490710979485824.png?w=720"
+    },
+    {
+      "id": 3837665, "link": "https://ozip.me/zZnAfnj",
+      "brand": "라이크이츠", "name": "[해외] 애벌레 번데기 모듈 주름 미니 소파 쇼파",
+      "price": 209000, "originalPrice": 285000, "deliveryFee": 0,
+      "rating": null, "reviews": 0,
+      "seats": [1], "size": "확인 불가",
+      "fabric": "신소재 가죽 / 스웨이드 / 코듀로이 2종 / 50주년 한정판 / 기타",
+      "modular": true, "togoStyle": true, "ivory": null,
+      "colors": ["원단별 색상은 상세페이지 참조"],
+      "delivery": "무료배송 · 해외 주문제작",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-438686534803456.jpg?w=720"
+    },
+    {
+      "id": 1611728, "link": "https://ozip.me/1XJFs7n",
+      "brand": "미드센추리", "name": "[15%쿠폰!] 미니로제 주름소파 1인쇼파 거실 인테리어 편한소파 85cm",
+      "price": 159900, "originalPrice": 200000, "deliveryFee": 40000,
+      "rating": 4.7, "reviews": 360,
+      "seats": [1, 2], "size": "폭 85cm (상품명 기준, 나머지 확인 불가)",
+      "fabric": "확인 불가",
+      "modular": false, "togoStyle": true, "ivory": false,
+      "colors": ["블랙 1인", "브라운 1인", "블랙 2인"],
+      "delivery": "배송비 40,000원",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-520461840216128.jpg?w=720"
+    },
+    {
+      "id": 3296307, "link": "https://ozip.me/6Bwv1Ho",
+      "brand": "옐로우라이트", "name": "PH 17 2인용기본 가죽모듈쇼파 이태리 내추럴 통가죽 천연면피 소가죽소파(전체가죽)",
+      "price": 1970000, "originalPrice": 3200000, "deliveryFee": 70000,
+      "rating": 5.0, "reviews": 2,
+      "seats": [2], "size": "확인 불가",
+      "fabric": "이태리 천연면피 소가죽 (전체가죽)",
+      "modular": true, "togoStyle": true, "ivory": null,
+      "colors": ["M-01 등 기본 5종", "크레스트 12종", "크레스트 빈티지 17종"],
+      "delivery": "배송비 70,000원 · 주문제작",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-323609314472064.jpg?w=720"
+    },
+    {
+      "id": 957369, "link": "https://ozip.me/HB0JRxB",
+      "brand": "마켓비", "name": "니스코 좌식소파 F708",
+      "price": 469000, "originalPrice": 562800, "deliveryFee": 0,
+      "rating": 5.0, "reviews": 3,
+      "seats": [2], "size": "100×110×76cm (13kg)",
+      "fabric": "폴리에스터 100% 커버, PU폼 충전, 소나무·합판·스틸 프레임",
+      "modular": false, "togoStyle": true, "ivory": true,
+      "colors": ["화이트"],
+      "delivery": "무료배송(도서산간 별도) · 오늘출발 · DIY 제품",
+      "image": "https://image.ohousecdn.com/i/bucketplace-v2-development/uploads/productions/162812482829285356.jpg?w=720"
+    },
+    {
+      "id": 4251635, "link": "https://ozip.me/OEHZztZ",
+      "brand": "마켓비", "name": "니스코 1인 패브릭 압축소파",
+      "price": 179000, "originalPrice": 214800, "deliveryFee": 0,
+      "rating": null, "reviews": 0,
+      "seats": [1], "size": "확인 불가",
+      "fabric": "패브릭 (세부 소재 확인 불가) · 압축 배송",
+      "modular": false, "togoStyle": true, "ivory": true,
+      "colors": ["베이지", "다크그레이", "라이트그레이"],
+      "delivery": "무료배송",
+      "image": "https://prs.ohousecdn.com/apne2/commerce/shop-images/471941/v1-551975952633920.jpg?w=720"
+    },
+    {
+      "id": 1860351, "link": "https://ozip.me/CzpGnOs",
+      "brand": "먼데이하우스", "name": "[한정특가] 라인 아쿠아텍스 1인용 패브릭 소파 M/L+스툴선택",
+      "price": 189000, "originalPrice": 287000, "deliveryFee": 30000,
+      "rating": 4.7, "reviews": 594,
+      "seats": [1], "size": "확인 불가 (미디움/라지 2종)",
+      "fabric": "아쿠아텍스 패브릭, 고밀도 폼",
+      "modular": false, "togoStyle": false, "ivory": true,
+      "colors": ["아이보리"],
+      "delivery": "배송비 30,000원 (설치 시 기사님께 직접 지불, 계단비 등 별도)",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-461050355658880.png?w=720"
+    },
+    {
+      "id": 4005241, "link": "https://ozip.me/ZGXxCBZ",
+      "brand": "미드센추리", "name": "미니로제 주름소파 럭셔리 초대형 2인소파 더블쇼파",
+      "price": 399900, "originalPrice": 450000, "deliveryFee": 70000,
+      "rating": 5.0, "reviews": 4,
+      "seats": [2], "size": "확인 불가",
+      "fabric": "확인 불가",
+      "modular": false, "togoStyle": true, "ivory": true,
+      "colors": ["블랙", "아이보리"],
+      "delivery": "배송비 70,000원",
+      "image": "https://image.ohousecdn.com/i/bucketplace-v2-development/uploads/openapi/8251659/1774326801204.jpg?w=720"
+    },
+    {
+      "id": 3065727, "link": "https://ozip.me/6esAgJr",
+      "brand": "에보니아", "name": "빅터 릴렉스2인용쇼파 아쿠아스웨이드 빈백소파 (스툴옵션)",
+      "price": 295200, "originalPrice": 514000, "deliveryFee": 30000,
+      "rating": 3.0, "reviews": 1,
+      "seats": [2], "size": "확인 불가",
+      "fabric": "아쿠아스웨이드 (상품명 기준)",
+      "modular": false, "togoStyle": true, "ivory": true,
+      "colors": ["라이트그레이", "핑크", "머스타드", "아이보리"],
+      "delivery": "배송비 30,000원",
+      "image": "https://prs.ohousecdn.com/apne2/any/uploads/productions/v1-297179286564864.jpg?w=720"
+    }
+  ]
+}
